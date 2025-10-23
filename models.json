@@ -1,0 +1,68 @@
+[
+  {
+    "name": "GPT-4.1",
+    "org": "OpenAI",
+    "date": "2025-05",
+    "category": ["텍스트", "멀티모달", "코드"],
+    "desc": "멀티모달 추론 품질이 강화된 최신 GPT. 근거 기반 답변과 장문에 강함.",
+    "url": "https://openai.com/gpt-4",
+    "price": {
+      "free": false,
+      "trial": false,
+      "input": "$5 / 1M tok",
+      "output": "$15 / 1M tok"
+    }
+  },
+  {
+    "name": "Claude 3.7 Sonnet",
+    "org": "Anthropic",
+    "date": "2025-09",
+    "category": ["텍스트", "코드", "멀티모달"],
+    "desc": "긴 문맥(200K)과 안전 가드레일 강점. 문서·코드 밸런스 우수.",
+    "url": "https://www.anthropic.com/claude",
+    "price": {
+      "free": false,
+      "trial": true,
+      "input": "$3 / 1M tok",
+      "output": "$15 / 1M tok"
+    }
+  },
+  {
+    "name": "Gemini 2 Flash",
+    "org": "Google DeepMind",
+    "date": "2025-06",
+    "category": ["멀티모달"],
+    "desc": "실시간 상호작용과 빠른 응답에 최적화된 경량 모델.",
+    "url": "https://deepmind.google/technologies/gemini",
+    "price": {
+      "free": true,
+      "trial": false
+    }
+  },
+  {
+    "name": "Mistral Large 2",
+    "org": "Mistral AI",
+    "date": "2025-07",
+    "category": ["텍스트", "코드"],
+    "desc": "영·불어 성능 우수한 상용 모델. 오픈 생태계 친화.",
+    "url": "https://mistral.ai/news/mistral-large-2",
+    "price": {
+      "free": false,
+      "trial": true,
+      "input": "$2 / 1M tok",
+      "output": "$8 / 1M tok"
+    }
+  },
+  {
+    "name": "LLaMA 3.2 70B",
+    "org": "Meta AI",
+    "date": "2025-08",
+    "category": ["오픈소스", "텍스트", "코드"],
+    "desc": "오픈소스 대표 LLM. 로컬 실행과 파인튜닝 생태계 활발.",
+    "url": "https://ai.meta.com/llama",
+    "price": {
+      "free": true,
+      "trial": false
+    }
+  }
+]

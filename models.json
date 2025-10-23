@@ -1,17 +1,12 @@
 [
   {
-    "name": "GPT-4.1",
-    "org": "OpenAI",
-    "date": "2025-05",
-    "category": ["텍스트", "멀티모달", "코드"],
-    "desc": "멀티모달 추론 품질이 강화된 최신 GPT. 근거 기반 답변과 장문에 강함.",
-    "url": "https://openai.com/gpt-4",
-    "price": {
-      "free": false,
-      "trial": false,
-      "input": "$5 / 1M tok",
-      "output": "$15 / 1M tok"
-    }
+    "name": "NanoBanana",
+    "org": "NanoBanana",
+    "date": "2025-10",
+    "category": ["텍스트", "멀티모달", "경량"],
+    "desc": "온디바이스 추론에 최적화된 초경량 멀티모달 모델. 짧고 빠른 대화, 낮은 지연을 목표로 설계됨.",
+    "url": "https://nanobanana.ai",
+    "price": { "free": true, "trial": false }
   },
   {
     "name": "Claude 3.7 Sonnet",
@@ -20,38 +15,16 @@
     "category": ["텍스트", "코드", "멀티모달"],
     "desc": "긴 문맥(200K)과 안전 가드레일 강점. 문서·코드 밸런스 우수.",
     "url": "https://www.anthropic.com/claude",
-    "price": {
-      "free": false,
-      "trial": true,
-      "input": "$3 / 1M tok",
-      "output": "$15 / 1M tok"
-    }
+    "price": { "free": false, "trial": true, "input": "$3 / 1M tok", "output": "$15 / 1M tok" }
   },
   {
-    "name": "Gemini 2 Flash",
-    "org": "Google DeepMind",
-    "date": "2025-06",
-    "category": ["멀티모달"],
-    "desc": "실시간 상호작용과 빠른 응답에 최적화된 경량 모델.",
-    "url": "https://deepmind.google/technologies/gemini",
-    "price": {
-      "free": true,
-      "trial": false
-    }
-  },
-  {
-    "name": "Mistral Large 2",
-    "org": "Mistral AI",
-    "date": "2025-07",
-    "category": ["텍스트", "코드"],
-    "desc": "영·불어 성능 우수한 상용 모델. 오픈 생태계 친화.",
-    "url": "https://mistral.ai/news/mistral-large-2",
-    "price": {
-      "free": false,
-      "trial": true,
-      "input": "$2 / 1M tok",
-      "output": "$8 / 1M tok"
-    }
+    "name": "Suno AI v5",
+    "org": "Suno",
+    "date": "2025-09",
+    "category": ["오디오", "음악", "생성"],
+    "desc": "텍스트→오디오(음악·보컬 포함) 생성에 특화된 모델. 스타일 전환과 사용자 프롬프트로 음악 제작에 활용됨.",
+    "url": "https://suno.ai/",
+    "price": { "free": false, "trial": true }
   },
   {
     "name": "LLaMA 3.2 70B",
@@ -60,9 +33,96 @@
     "category": ["오픈소스", "텍스트", "코드"],
     "desc": "오픈소스 대표 LLM. 로컬 실행과 파인튜닝 생태계 활발.",
     "url": "https://ai.meta.com/llama",
-    "price": {
-      "free": true,
-      "trial": false
-    }
+    "price": { "free": true, "trial": false }
+  },
+  {
+    "name": "Midjourney V7",
+    "org": "Midjourney, Inc.",
+    "date": "2025-04",
+    "category": ["이미지", "멀티모달"],
+    "desc": "커뮤니티 기반 스타일·프롬프트 공유와 고해상도 이미지 생성에 강점.",
+    "url": "https://www.midjourney.com/",
+    "price": { "free": false, "trial": true, "subscription": "$10 / month" }
+  },
+  {
+    "name": "Mistral Large 2",
+    "org": "Mistral AI",
+    "date": "2025-07",
+    "category": ["텍스트", "코드"],
+    "desc": "영·불어 성능 우수한 상용 모델. 오픈 생태계 친화.",
+    "url": "https://mistral.ai/news/mistral-large-2",
+    "price": { "free": false, "trial": true, "input": "$2 / 1M tok", "output": "$8 / 1M tok" }
+  },
+  {
+    "name": "Gemini 2 Flash",
+    "org": "Google DeepMind",
+    "date": "2025-06",
+    "category": ["멀티모달"],
+    "desc": "실시간 상호작용과 빠른 응답에 최적화된 경량 모델.",
+    "url": "https://deepmind.google/technologies/gemini",
+    "price": { "free": true, "trial": false }
+  },
+  {
+    "name": "GPT-4.1",
+    "org": "OpenAI",
+    "date": "2025-05",
+    "category": ["텍스트", "멀티모달", "코드"],
+    "desc": "멀티모달 추론 품질이 강화된 최신 GPT. 근거 기반 답변과 장문에 강함.",
+    "url": "https://openai.com/gpt-4",
+    "price": { "free": false, "trial": false, "input": "$5 / 1M tok", "output": "$15 / 1M tok" }
+  },
+  {
+    "name": "Cohere Command R",
+    "org": "Cohere",
+    "date": "2024-03",
+    "category": ["텍스트", "검색", "임베딩"],
+    "desc": "검색·임베딩 성능을 강화한 텍스트 모델 계열. RAG 워크플로우에 최적화.",
+    "url": "https://cohere.com/models",
+    "price": { "free": false, "trial": true }
+  },
+  {
+    "name": "DALL·E 3",
+    "org": "OpenAI",
+    "date": "2023-10",
+    "category": ["이미지", "멀티모달", "생성"],
+    "desc": "텍스트 프롬프트 기반 고품질 이미지 생성. ChatGPT 통합으로 대화형 이미지 생성 가능.",
+    "url": "https://openai.com/dall-e-3/",
+    "price": { "free": false, "trial": false, "notes": "ChatGPT Plus 포함(월 $20), API: 예시 $0.04 / image" }
+  },
+  {
+    "name": "Adobe Firefly",
+    "org": "Adobe",
+    "date": "2023-09",
+    "category": ["이미지", "멀티모달", "크리에이티브"],
+    "desc": "상업적 사용권을 염두에 둔 이미지·벡터·텍스트-이미지 생성 도구. Adobe Creative Cloud와 통합.",
+    "url": "https://www.adobe.com/products/firefly.html",
+    "price": { "free": true, "trial": false }
+  },
+  {
+    "name": "Falcon 180B",
+    "org": "TII",
+    "date": "2023-09",
+    "category": ["오픈소스", "텍스트"],
+    "desc": "대형 공개 모델로 연구·상업적 활용을 염두에 둔 오픈 라이선스 제공.",
+    "url": "https://falconllm.tii.ae/",
+    "price": { "free": true, "trial": false }
+  },
+  {
+    "name": "Stable Diffusion XL (SDXL)",
+    "org": "Stability AI",
+    "date": "2023-07",
+    "category": ["이미지", "오픈소스", "생성"],
+    "desc": "고품질 오픈소스 이미지 생성 모델. 로컬 실행 및 다양한 커스텀 파인튜닝 가능.",
+    "url": "https://stability.ai/stablediffusion",
+    "price": { "free": true, "trial": false }
+  },
+  {
+    "name": "Runway Gen-2",
+    "org": "Runway",
+    "date": "2023-05",
+    "category": ["비디오", "이미지", "생성"],
+    "desc": "텍스트/이미지 입력으로 고품질 비디오 생성 가능한 모델. 크리에이티브 워크플로우에 최적화.",
+    "url": "https://runwayml.com/ai-video/gen2/",
+    "price": { "free": false, "trial": true }
   }
 ]

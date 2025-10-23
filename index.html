@@ -1,62 +1,435 @@
+아래 파일들을 그대로 복사해 리포지토리에 넣으면 됩니다.
+
+## 📁 폴더 구조
+
+```
+/ (repo root)
+ ├─ index.html
+ ├─ styles.css
+ ├─ app.js
+ ├─ models.json        # (수동 업데이트용)
+ └─ assets/            # (선택, 로고/이미지)
+```
+
+---
+
+## 1) `index.html`
+
+```html
 <!doctype html>
-<button id="send" class="btn primary">보내기 ⏎</button>
-</div>
-</main>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AI 포털 (GitHub Pages)</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<div class="app">
+  <header>
+    <h1>AI 포털 (HTML+JS)</h1>
+    <div class="grow"></div>
+    <select id="model" class="input" style="max-width:220px">
+      <option value="gpt-4o-mini">gpt-4o-mini</option>
+      <option value="gpt-4.1">gpt-4.1</option>
+      <option value="claude-3.7-sonnet">claude-3.7-sonnet</option>
+    </select>
+    <button id="btnSettings" class="btn">설정</button>
+    <button id="btnClear" class="btn">대화 초기화</button>
+  </header>
 
+  <!-- Top-wide Latest AI Models section (moved up for first-view visibility) -->
+  <section class="col wide">
+    <h3>🧠 최신 AI 모델</h3>
+    <div class="panel">
+      <div class="flex" style="margin:6px 0 10px 0">
+        <select id="aiCatFilter" class="input" style="max-width:180px">
+          <option value="">전체 카테고리</option>
+          <option>텍스트</option>
+          <option>코드</option>
+          <option>비전</option>
+          <option>오디오/음성</option>
+          <option>멀티모달</option>
+          <option>오픈소스</option>
+        </select>
+        <label class="tag"><input id="aiFreeOnly" type="checkbox">무료/프리티어만</label>
+      </div>
+      <div id="aiList"></div>
+    </div>
+  </section>
 
-<aside class="col right">
-<h3>설정 & 상태</h3>
-<div class="panel">
-<div class="kv">
-<label>프록시 API</label>
-<input id="apiBase" class="input" placeholder="https://your-worker.example.com" />
-<label>온도(창의성)</label>
-<input id="temp" class="range" type="range" min="0" max="1" step="0.05" value="0.4" />
-<label>길이 제한</label>
-<input id="maxTokens" class="input" type="number" value="800" />
-</div>
-<div id="status" class="pill" style="margin-top:10px">상태: 대기</div>
-<details style="margin-top:10px">
-<summary>인용/근거</summary>
-<div id="citations"></div>
-</details>
-<details style="margin-top:10px">
-<summary>가이드</summary>
-<div class="cite">
-GitHub Pages에서는 비밀키를 절대 노출하지 마세요.
-Cloudflare Workers/Vercel Functions 등으로 <b>프록시 엔드포인트</b>를 만든 뒤, 여기에 URL만 연결하세요.
-</div>
-</details>
-</div>
-</aside>
+  <section class="col">
+    <h3>데이터 소스</h3>
+    <div class="sources">
+      <label class="tag"><input type="checkbox" id="srcWeb" checked>웹 검색 허용</label>
+      <label class="tag"><input type="checkbox" id="srcRag">RAG(내 문서)</label>
+      <div class="pill">GitHub Pages는 <b>정적 호스팅</b>입니다. RAG/LLM 호출은 <span class="note">외부 프록시 API</span>가 필요합니다.</div>
+      <div class="flex">
+        <input id="ragQuery" class="input" placeholder="문서 검색어 (선택)" />
+        <button id="btnRag" class="btn">검색</button>
+      </div>
+      <small class="note">RAG 활성 시, 백엔드가 <code>/rag/query</code>를 제공해야 합니다.</small>
+    </div>
+  </section>
 
+  <main class="col chat">
+    <div id="messages" class="messages"></div>
+    <div class="composer">
+      <textarea id="input" placeholder="메시지를 입력하세요. (Shift+Enter 줄바꿈)"></textarea>
+      <button id="send" class="btn primary">보내기 ⏎</button>
+    </div>
+  </main>
 
-<section class="col right">
-<h3>🧠 최신 AI 모델</h3>
-<div class="panel">
-<div class="flex" style="margin:6px 0 10px 0">
-<select id="aiCatFilter" class="input" style="max-width:180px">
-<option value="">전체 카테고리</option>
-<option>텍스트</option>
-<option>코드</option>
-<option>비전</option>
-<option>오디오/음성</option>
-<option>멀티모달</option>
-<option>오픈소스</option>
-</select>
-<label class="tag"><input id="aiFreeOnly" type="checkbox">무료/프리티어만</label>
+  <aside class="col right">
+    <h3>설정 & 상태</h3>
+    <div class="panel">
+      <div class="kv">
+        <label>프록시 API</label>
+        <input id="apiBase" class="input" placeholder="https://your-worker.example.com" />
+        <label>온도(창의성)</label>
+        <input id="temp" class="range" type="range" min="0" max="1" step="0.05" value="0.4" />
+        <label>길이 제한</label>
+        <input id="maxTokens" class="input" type="number" value="800" />
+      </div>
+      <div id="status" class="pill" style="margin-top:10px">상태: 대기</div>
+      <details style="margin-top:10px">
+        <summary>인용/근거</summary>
+        <div id="citations"></div>
+      </details>
+      <details style="margin-top:10px">
+        <summary>가이드</summary>
+        <div class="cite">
+          GitHub Pages에서는 비밀키를 절대 노출하지 마세요.
+          Cloudflare Workers/Vercel Functions 등으로 <b>프록시 엔드포인트</b>를 만든 뒤, 여기에 URL만 연결하세요.
+        </div>
+      </details>
+    </div>
+  </aside>
+  <footer>
+    © 2025 AI Portal • HTML + JavaScript • GitHub Pages 배포용
+  </footer>
 </div>
-<div id="aiList"></div>
-</div>
-</section>
-
-
-<footer>
-© 2025 AI Portal • HTML + JavaScript • GitHub Pages 배포용
-</footer>
-</div>
-
 
 <script src="app.js"></script>
 </body>
 </html>
+```
+
+---
+
+## 2) `styles.css`
+
+```css
+:root { --bg:#0b0f14; --panel:#121821; --muted:#94a3b8; --text:#e5e7eb; --accent:#60a5fa; --card:#0f172a; --border:#1f2a37; }
+*{ box-sizing:border-box }
+html,body{ height:100% }
+body{ margin:0; background:var(--bg); color:var(--text); font:14px/1.4 system-ui, -apple-system, Segoe UI, Roboto, Noto Sans, Apple SD Gothic Neo, sans-serif }
+.app{ display:grid; grid-template-columns:260px 1fr 320px; grid-template-rows:auto 1fr auto; gap:12px; padding:12px; height:100% }
+header{ grid-column:1/4; display:flex; align-items:center; gap:10px; background:var(--panel); border:1px solid var(--border); border-radius:14px; padding:10px 14px }
+header h1{ font-size:16px; margin:0; letter-spacing:.2px }
+header .grow{ flex:1 }
+.btn,button{ background:#0b1220; border:1px solid var(--border); color:var(--text); padding:8px 10px; border-radius:10px; cursor:pointer }
+.btn.primary{ background:var(--accent); color:#0b1220; border:none }
+.col{ background:var(--panel); border:1px solid var(--border); border-radius:14px; overflow:hidden; display:flex; flex-direction:column; min-height:0 }
+.col h3{ margin:0; padding:10px 12px; border-bottom:1px solid var(--border); color:#cbd5e1; font-size:13px; letter-spacing:.3px; text-transform:uppercase }
+.sources{ padding:10px; gap:8px; display:flex; flex-direction:column }
+.tag{ display:inline-flex; padding:6px 8px; border:1px solid var(--border); border-radius:999px; align-items:center; gap:6px; color:var(--muted); cursor:pointer }
+.tag input{ margin:0 }
+.chat{ display:flex; flex-direction:column }
+.messages{ flex:1; overflow:auto; padding:16px; display:flex; flex-direction:column; gap:12px }
+.msg{ display:flex; gap:10px }
+.msg .bubble{ max-width:80%; background:var(--card); border:1px solid var(--border); padding:10px 12px; border-radius:12px; white-space:pre-wrap; word-break:break-word }
+.msg.user .bubble{ background:#162033; border-color:#253046 }
+.msg .avatar{ width:28px; height:28px; border-radius:999px; background:#0e1525; border:1px solid var(--border); display:grid; place-items:center; font-size:12px; color:#93c5fd }
+.composer{ display:flex; gap:8px; padding:12px; border-top:1px solid var(--border) }
+.composer textarea{ flex:1; resize:none; height:66px; padding:10px 12px; border-radius:10px; border:1px solid var(--border); background:#0e1525; color:var(--text) }
+.right{ display:flex; flex-direction:column }
+.right .panel{ padding:10px; overflow:auto }
+.kv{ display:grid; grid-template-columns:120px 1fr; gap:6px 10px; align-items:center }
+.kv label{ color:var(--muted); font-size:12px }
+.input{ background:#0e1525; border:1px solid var(--border); border-radius:10px; padding:8px 10px; color:var(--text); width:100% }
+.range{ width:100% }
+.pill{ font-size:12px; color:var(--muted); padding:6px 8px; border:1px dashed var(--border); border-radius:8px }
+.note{ color:#93c5fd; font-size:12px }
+.cite{ color:#9ca3af; font-size:12px; border-left:2px solid #1f2937; padding-left:8px; margin:6px 0 }
+footer{ grid-column:1/4; text-align:center; color:var(--muted); font-size:12px }
+.danger{ color:#fca5a5 }
+.ok{ color:#86efac }
+.flex{ display:flex; gap:8px; align-items:center }
+@media (max-width:1100px){
+  .app{ grid-template-columns:1fr; grid-template-rows:auto auto auto 1fr auto } 
+  .col.right{ order:4 }
+  .wide{ order:2 }
+}
+
+/* Wide (full-width) section for top hero models */
+.wide{ grid-column:1/4 } .col.right{ order:3 } }
+```
+
+---
+
+## 3) `app.js`
+
+```js
+const els = {
+  messages: document.getElementById('messages'),
+  input: document.getElementById('input'),
+  send: document.getElementById('send'),
+  model: document.getElementById('model'),
+  btnSettings: document.getElementById('btnSettings'),
+  btnClear: document.getElementById('btnClear'),
+  apiBase: document.getElementById('apiBase'),
+  temp: document.getElementById('temp'),
+  maxTokens: document.getElementById('maxTokens'),
+  status: document.getElementById('status'),
+  citations: document.getElementById('citations'),
+  srcWeb: document.getElementById('srcWeb'),
+  srcRag: document.getElementById('srcRag'),
+  ragQuery: document.getElementById('ragQuery'),
+  btnRag: document.getElementById('btnRag'),
+  aiCatFilter: document.getElementById('aiCatFilter'),
+  aiFreeOnly: document.getElementById('aiFreeOnly'),
+  aiList: document.getElementById('aiList')
+};
+
+const state = {
+  apiBase: localStorage.getItem('apiBase') || '',
+  messages: [],
+  streaming: false,
+};
+els.apiBase.value = state.apiBase;
+
+function setStatus(text, ok=false){
+  els.status.textContent = '상태: ' + text;
+  els.status.className = 'pill ' + (ok ? 'ok' : '');
+}
+
+function addMessage(role, content){
+  const wrap = document.createElement('div');
+  wrap.className = 'msg ' + role;
+  const avatar = document.createElement('div');
+  avatar.className = 'avatar';
+  avatar.textContent = role === 'user' ? 'U' : 'A';
+  const bubble = document.createElement('div');
+  bubble.className = 'bubble';
+  bubble.textContent = content;
+  wrap.appendChild(avatar); wrap.appendChild(bubble);
+  els.messages.appendChild(wrap);
+  els.messages.scrollTop = els.messages.scrollHeight;
+}
+
+function updateLastAssistantChunk(text){
+  const last = els.messages.querySelector('.msg.assistant:last-child .bubble');
+  if (last) last.textContent = text;
+}
+
+function startAssistant(){ addMessage('assistant', ''); }
+
+async function sendChat(){
+  const content = els.input.value.trim();
+  if(!content) return;
+  if(!els.apiBase.value){ setStatus('프록시 API를 설정하세요', false); alert('설정 → 프록시 API URL이 필요합니다.'); return; }
+  setStatus('요청 중…');
+  addMessage('user', content);
+  els.input.value = '';
+
+  const payload = {
+    model: els.model.value,
+    temperature: parseFloat(els.temp.value),
+    max_tokens: parseInt(els.maxTokens.value || '800'),
+    messages: [...state.messages, { role:'user', content }],
+    sources: { web: els.srcWeb.checked, rag: els.srcRag.checked, rag_query: els.ragQuery.value || '' }
+  };
+
+  state.messages.push({ role:'user', content });
+  startAssistant();
+
+  try{
+    const res = await fetch(cleanJoin(els.apiBase.value, '/chat'), { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(payload) });
+
+    if(res.body && res.headers.get('Content-Type')?.includes('text')){
+      state.streaming = true; let acc='';
+      const reader = res.body.getReader();
+      while(true){
+        const {done, value} = await reader.read();
+        if(done) break; acc += new TextDecoder().decode(value);
+        updateLastAssistantChunk(acc);
+      }
+      state.streaming = false;
+      state.messages.push({ role:'assistant', content: acc });
+      setStatus('완료', true);
+      return;
+    }
+
+    const data = await res.json();
+    const text = data.text || (data.output?.content ?? '[빈 응답]');
+    updateLastAssistantChunk(text);
+    state.messages.push({ role:'assistant', content: text });
+    renderCitations(data.citations || []);
+    setStatus('완료', true);
+  }catch(err){
+    updateLastAssistantChunk('⚠️ 오류: ' + err.message);
+    setStatus('실패');
+  }
+}
+
+function renderCitations(items){
+  els.citations.innerHTML = '';
+  if(!items.length){ els.citations.textContent = '—'; return; }
+  for(const c of items){
+    const div = document.createElement('div');
+    div.className = 'cite';
+    const a = document.createElement('a'); a.href = c.url; a.textContent = c.title || c.url; a.target = '_blank';
+    div.appendChild(a); els.citations.appendChild(div);
+  }
+}
+
+function cleanJoin(base, path){
+  return base.replace(/\/$/, '') + path;
+}
+
+// 이벤트 바인딩
+els.send.addEventListener('click', sendChat);
+els.input.addEventListener('keydown', (e)=>{
+  if(e.key==='Enter' && !e.shiftKey){ e.preventDefault(); sendChat(); }
+});
+els.btnClear.addEventListener('click', ()=>{ state.messages=[]; els.messages.innerHTML=''; renderCitations([]); setStatus('대화 초기화됨', true); });
+els.btnSettings.addEventListener('click', ()=>{ const v = prompt('프록시 API URL을 입력하세요', els.apiBase.value || ''); if(v!==null){ els.apiBase.value=v; localStorage.setItem('apiBase', v); setStatus('설정 저장됨', true);} });
+els.apiBase.addEventListener('change', ()=>{ localStorage.setItem('apiBase', els.apiBase.value); });
+els.btnRag?.addEventListener('click', async ()=>{
+  if(!els.apiBase.value){ alert('프록시 API URL 필요'); return; }
+  const q = els.ragQuery.value.trim(); if(!q) return;
+  setStatus('RAG 검색 중…');
+  try{
+    const r = await fetch(cleanJoin(els.apiBase.value, '/rag/query'), {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({ q })});
+    const data = await r.json();
+    const hits = data.hits || [];
+    renderCitations(hits.map(h=>({ title: h.title || h.url, url: h.url })));
+    setStatus(`RAG 결과 ${hits.length}건`, true);
+  }catch(e){ setStatus('RAG 실패'); alert(e.message); }
+});
+
+// ──────────────────────────────────────────────
+// 최신 AI 모델 (수동 업데이트형 models.json)
+// ──────────────────────────────────────────────
+let ALL_MODELS = [];
+function formatPrice(p){
+  if(!p) return '가격 정보 없음';
+  const fr = p.free ? '무료' : (p.trial? '체험판' : '유료');
+  const parts = [];
+  if(p.input) parts.push(`입력 ${p.input}`);
+  if(p.output) parts.push(`출력 ${p.output}`);
+  if(p.image) parts.push(`이미지 ${p.image}`);
+  if(p.audio) parts.push(`오디오 ${p.audio}`);
+  return [fr, parts.join(' · ')].filter(Boolean).join(' — ');
+}
+function renderModels(){
+  const box = els.aiList; if(!box) return;
+  const cat = els.aiCatFilter?.value || '';
+  const freeOnly = els.aiFreeOnly?.checked;
+  box.innerHTML='';
+  const items = ALL_MODELS.filter(m=>{
+    const okCat = !cat || (Array.isArray(m.category)? m.category.includes(cat) : m.category===cat);
+    const okFree = !freeOnly || (!!m.price?.free || (m.price?.trial===true));
+    return okCat && okFree;
+  });
+  if(!items.length){ box.textContent = '해당 조건의 모델이 없습니다.'; return; }
+  for(const m of items){
+    const price = formatPrice(m.price);
+    const cats = Array.isArray(m.category)? m.category.join(', ') : (m.category||'');
+    const div = document.createElement('div');
+    div.className = 'cite';
+    div.innerHTML = `
+      <b>${m.name}</b> <small>(${m.org}${m.date?`, ${m.date}`:''}${cats?`, ${cats}`:''})</small><br>
+      ${m.desc || ''}<br>
+      <span class="pill">${price}</span>
+      <a href="${m.url}" target="_blank" style="margin-left:8px">🔗 자세히 보기</a>
+    `;
+    box.appendChild(div);
+  }
+}
+async function loadModels(){
+  try{
+    const res = await fetch('models.json', { cache: 'no-cache' });
+    const items = await res.json();
+    ALL_MODELS = Array.isArray(items) ? items : [];
+    renderModels();
+  }catch(e){
+    const box = els.aiList; if(!box) return;
+    box.classList.add('danger');
+    box.textContent = '모델 정보를 불러올 수 없습니다: ' + e.message;
+  }
+}
+
+document.addEventListener('change', (e)=>{
+  if(e.target && (e.target.id==='aiCatFilter' || e.target.id==='aiFreeOnly')){
+    renderModels();
+  }
+});
+
+// 환영 메시지 & 초기화
+addMessage('assistant', '안녕하세요! GitHub Pages에서 동작하는 HTML+JS AI 포털 템플릿입니다. 설정 버튼에서 프록시 API URL을 입력하고 시작하세요.');
+loadModels();
+```
+
+---
+
+## 4) `models.json` (예시)
+
+```json
+[
+  {
+    "name": "GPT-4.1",
+    "org": "OpenAI",
+    "date": "2025-05",
+    "category": ["텍스트", "멀티모달", "코드"],
+    "desc": "멀티모달 추론 품질이 강화된 최신 GPT. 근거 기반 답변과 장문에 강함.",
+    "url": "https://openai.com/gpt-4",
+    "price": { "free": false, "trial": false, "input": "$5 / 1M tok", "output": "$15 / 1M tok" }
+  },
+  {
+    "name": "Claude 3.7 Sonnet",
+    "org": "Anthropic",
+    "date": "2025-09",
+    "category": ["텍스트", "코드", "멀티모달"],
+    "desc": "긴 문맥(200K)과 안전 가드레일 강점. 문서·코드 밸런스 우수.",
+    "url": "https://www.anthropic.com/claude",
+    "price": { "free": false, "trial": true, "input": "$3 / 1M tok", "output": "$15 / 1M tok" }
+  },
+  {
+    "name": "Gemini 2 Flash",
+    "org": "Google DeepMind",
+    "date": "2025-06",
+    "category": ["멀티모달"],
+    "desc": "실시간 상호작용과 빠른 응답에 최적화된 경량 모델.",
+    "url": "https://deepmind.google/technologies/gemini",
+    "price": { "free": true, "trial": false }
+  },
+  {
+    "name": "Mistral Large 2",
+    "org": "Mistral AI",
+    "date": "2025-07",
+    "category": ["텍스트", "코드"],
+    "desc": "영·불어 성능 우수한 상용 모델. 오픈 생태계 친화.",
+    "url": "https://mistral.ai/news/mistral-large-2",
+    "price": { "free": false, "trial": true, "input": "$2 / 1M tok", "output": "$8 / 1M tok" }
+  },
+  {
+    "name": "LLaMA 3.2 70B",
+    "org": "Meta AI",
+    "date": "2025-08",
+    "category": ["오픈소스", "텍스트", "코드"],
+    "desc": "오픈소스 대표 LLM. 로컬 실행과 파인튜닝 생태계 활발.",
+    "url": "https://ai.meta.com/llama",
+    "price": { "free": true, "trial": false }
+  }
+]
+```
+
+---
+
+### 배포 팁
+
+* GitHub Pages: Settings → Pages → Branch 지정 후 열람
+* 캐시 무효화: `models.json`은 `cache: 'no-cache'`로 요청하지만, 강력 리로드(Ctrl/Cmd+Shift+R)로 즉시 반영 확인 가능
+* 비밀키 보관: 프록시(Cloudflare Worker 등)에만 보관, 프론트엔드에는 절대 노출 금지

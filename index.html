@@ -1,29 +1,19 @@
-
 <!doctype html>
+
 <html lang="ko">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>AI 포털 (GitHub Pages)</title>
+  <title>🧠 최신 AI 모델</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
 <div class="app">
   <header>
-    <h1>AI 포털 (HTML+JS)</h1>
-    <div class="grow"></div>
-    <select id="model" class="input" style="max-width:220px">
-      <option value="gpt-4o-mini">gpt-4o-mini</option>
-      <option value="gpt-4.1">gpt-4.1</option>
-      <option value="claude-3.7-sonnet">claude-3.7-sonnet</option>
-    </select>
-    <button id="btnSettings" class="btn">설정</button>
-    <button id="btnClear" class="btn">대화 초기화</button>
+    <h1>🧠 최신 AI 모델</h1>
   </header>
 
-  <!-- Top-wide Latest AI Models section (moved up for first-view visibility) -->
-  <section class="col wide">
-    <h3>🧠 최신 AI 모델</h3>
+  <main class="col wide">
     <div class="panel">
       <div class="flex" style="margin:6px 0 10px 0">
         <select id="aiCatFilter" class="input" style="max-width:180px">
@@ -39,60 +29,12 @@
       </div>
       <div id="aiList"></div>
     </div>
-  </section>
-
-  <section class="col">
-    <h3>데이터 소스</h3>
-    <div class="sources">
-      <label class="tag"><input type="checkbox" id="srcWeb" checked>웹 검색 허용</label>
-      <label class="tag"><input type="checkbox" id="srcRag">RAG(내 문서)</label>
-      <div class="pill">GitHub Pages는 <b>정적 호스팅</b>입니다. RAG/LLM 호출은 <span class="note">외부 프록시 API</span>가 필요합니다.</div>
-      <div class="flex">
-        <input id="ragQuery" class="input" placeholder="문서 검색어 (선택)" />
-        <button id="btnRag" class="btn">검색</button>
-      </div>
-      <small class="note">RAG 활성 시, 백엔드가 <code>/rag/query</code>를 제공해야 합니다.</small>
-    </div>
-  </section>
-
-  <main class="col chat">
-    <div id="messages" class="messages"></div>
-    <div class="composer">
-      <textarea id="input" placeholder="메시지를 입력하세요. (Shift+Enter 줄바꿈)"></textarea>
-      <button id="send" class="btn primary">보내기 ⏎</button>
-    </div>
   </main>
 
-  <aside class="col right">
-    <h3>설정 & 상태</h3>
-    <div class="panel">
-      <div class="kv">
-        <label>프록시 API</label>
-        <input id="apiBase" class="input" placeholder="https://your-worker.example.com" />
-        <label>온도(창의성)</label>
-        <input id="temp" class="range" type="range" min="0" max="1" step="0.05" value="0.4" />
-        <label>길이 제한</label>
-        <input id="maxTokens" class="input" type="number" value="800" />
-      </div>
-      <div id="status" class="pill" style="margin-top:10px">상태: 대기</div>
-      <details style="margin-top:10px">
-        <summary>인용/근거</summary>
-        <div id="citations"></div>
-      </details>
-      <details style="margin-top:10px">
-        <summary>가이드</summary>
-        <div class="cite">
-          GitHub Pages에서는 비밀키를 절대 노출하지 마세요.
-          Cloudflare Workers/Vercel Functions 등으로 <b>프록시 엔드포인트</b>를 만든 뒤, 여기에 URL만 연결하세요.
-        </div>
-      </details>
-    </div>
-  </aside>
   <footer>
-    © 2025 AI Portal • HTML + JavaScript • GitHub Pages 배포용
+    © 2025 AI Portal • 최신 AI 모델 정보 (수동 업데이트형)
   </footer>
 </div>
-
 <script src="app.js"></script>
 </body>
 </html>

@@ -36,15 +36,6 @@
     "price": { "free": true, "trial": false }
   },
   {
-    "name": "Midjourney V7",
-    "org": "Midjourney, Inc.",
-    "date": "2025-04",
-    "category": ["이미지", "멀티모달"],
-    "desc": "커뮤니티 기반 스타일·프롬프트 공유와 고해상도 이미지 생성에 강점.",
-    "url": "https://www.midjourney.com/",
-    "price": { "free": false, "trial": true, "subscription": "$10 / month" }
-  },
-  {
     "name": "Mistral Large 2",
     "org": "Mistral AI",
     "date": "2025-07",
@@ -70,6 +61,15 @@
     "desc": "멀티모달 추론 품질이 강화된 최신 GPT. 근거 기반 답변과 장문에 강함.",
     "url": "https://openai.com/gpt-4",
     "price": { "free": false, "trial": false, "input": "$5 / 1M tok", "output": "$15 / 1M tok" }
+  },
+  {
+    "name": "Midjourney V7",
+    "org": "Midjourney, Inc.",
+    "date": "2025-04",
+    "category": ["이미지", "멀티모달"],
+    "desc": "커뮤니티 기반 스타일·프롬프트 공유와 고해상도 이미지 생성에 강점.",
+    "url": "https://www.midjourney.com/",
+    "price": { "free": false, "trial": true, "subscription": "$10 / month" }
   },
   {
     "name": "Cohere Command R",

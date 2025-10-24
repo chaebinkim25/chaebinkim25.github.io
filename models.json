@@ -124,5 +124,77 @@
     "desc": "텍스트/이미지 입력으로 고품질 비디오 생성 가능한 모델. 크리에이티브 워크플로우에 최적화.",
     "url": "https://runwayml.com/ai-video/gen2/",
     "price": { "free": false, "trial": true }
+  },
+  {
+    "name": "Gamma",
+    "org": "Gamma Labs",
+    "date": "2025-02",
+    "category": ["프레젠테이션", "PPT", "생성"],
+    "desc": "콘텐츠 중심의 자동 프레젠테이션 생성 도구. 문서·링크·이미지를 입력하면 스토리라인과 디자인을 자동 구성.",
+    "url": "https://gamma.app/",
+    "price": { "free": false, "trial": true, "subscription": "자세한 요금은 홈페이지 참조" }
+  },
+  {
+    "name": "Beautiful.ai",
+    "org": "Beautiful.AI",
+    "date": "2024-11",
+    "category": ["프레젠테이션", "PPT", "디자인"],
+    "desc": "디자인 가이드를 적용해 자동 레이아웃과 일관된 스타일의 슬라이드를 만들어주는 도구. 협업 기능 지원.",
+    "url": "https://www.beautiful.ai/",
+    "price": { "free": false, "trial": true, "subscription": "$12 / month (예시)" }
+  },
+  {
+    "name": "SlidesAI",
+    "org": "SlidesAI",
+    "date": "2024-06",
+    "category": ["프레젠테이션", "PPT", "자동생성"],
+    "desc": "간단한 텍스트 입력으로 슬라이드를 자동 생성하고 요약·포인트 추출을 지원. 기존 슬라이드 보완에도 유용.",
+    "url": "https://www.slidesai.io/",
+    "price": { "free": false, "trial": true }
+  },
+  {
+    "name": "Tome",
+    "org": "Tome",
+    "date": "2024-08",
+    "category": ["프레젠테이션", "스토리텔링", "멀티모달"],
+    "desc": "스토리 중심의 프레젠테이션 제작에 강점. 멀티모달 입력(텍스트·이미지·링크)을 바탕으로 내러티브 기반 슬라이드 제작.",
+    "url": "https://tome.app/",
+    "price": { "free": true, "trial": false, "notes": "상용 기능은 유료" }
+  },
+  {
+    "name": "Synthesia",
+    "org": "Synthesia",
+    "date": "2023-04",
+    "category": ["비디오", "아바타", "생성"],
+    "desc": "AI 아바타 기반 텍스트→비디오 생성 서비스. 교육·기업용 비디오 제작에 널리 사용됨. 다국어 음성 생성 지원.",
+    "url": "https://www.synthesia.io/",
+    "price": { "free": false, "trial": true, "subscription": "엔터프라이즈/사용량 기반" }
+  },
+  {
+    "name": "Pictory",
+    "org": "Pictory",
+    "date": "2023-12",
+    "category": ["비디오", "요약", "편집"],
+    "desc": "긴 영상에서 핵심 장면을 자동 추출하거나 텍스트에서 비디오를 생성하는 도구. 자막·요약 기능을 제공.",
+    "url": "https://pictory.ai/",
+    "price": { "free": false, "trial": true, "subscription": "월별 요금제 존재" }
+  },
+  {
+    "name": "Descript",
+    "org": "Descript",
+    "date": "2022-10",
+    "category": ["비디오", "오디오", "편집", "전사"],
+    "desc": "오디오·비디오 편집을 텍스트 기반으로 처리하는 도구. 전사, 오버더빙, 화면 편집 및 협업 기능 강함.",
+    "url": "https://www.descript.com/",
+    "price": { "free": true, "trial": false, "subscription": "프리미엄 기능 유료" }
+  },
+  {
+    "name": "VEED",
+    "org": "VEED.IO",
+    "date": "2023-05",
+    "category": ["비디오", "편집", "자막"],
+    "desc": "브라우저 기반 비디오 편집기로, 자막 자동 생성·번역, 템플릿 기반 편집, 소셜용 포맷 변환에 강점.",
+    "url": "https://www.veed.io/",
+    "price": { "free": true, "trial": false, "subscription": "유료 플랜 제공" }
   }
 ]

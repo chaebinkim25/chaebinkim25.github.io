@@ -196,5 +196,5 @@
     "desc": "오디오·비디오 편집을 텍스트 기반으로 처리하는 도구. 전사, 오버더빙, 화면 편집 및 협업 기능 강함.",
     "url": "https://www.descript.com/",
     "price": { "free": true, "trial": false, "subscription": "프리미엄 기능 유료" }
-  },
+  }
 ]

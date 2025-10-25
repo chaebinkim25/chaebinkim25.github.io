@@ -45,6 +45,15 @@
     "price": { "free": false, "trial": true, "input": "$2 / 1M tok", "output": "$8 / 1M tok" }
   },
   {
+    "name": "Runway Gen-3 Alpha",
+    "org": "Runway",
+    "date": "2025-07",
+    "category": ["영상", "이미지", "생성"],
+    "desc": "텍스트/이미지 입력으로 고품질 비디오 생성 가능한 모델. 크리에이티브 워크플로우에 최적화.",
+    "url": "https://runwayml.com/ai-video/gen2/",
+    "price": { "free": false, "trial": true }
+  },
+  {
     "name": "Gemini 2 Flash",
     "org": "Google DeepMind",
     "date": "2025-06",
@@ -124,15 +133,6 @@
     "desc": "고품질 오픈소스 이미지 생성 모델. 로컬 실행 및 다양한 커스텀 파인튜닝 가능.",
     "url": "https://stability.ai/stablediffusion",
     "price": { "free": true, "trial": false }
-  },
-  {
-    "name": "Runway Gen-2",
-    "org": "Runway",
-    "date": "2023-05",
-    "category": ["비디오", "이미지", "생성"],
-    "desc": "텍스트/이미지 입력으로 고품질 비디오 생성 가능한 모델. 크리에이티브 워크플로우에 최적화.",
-    "url": "https://runwayml.com/ai-video/gen2/",
-    "price": { "free": false, "trial": true }
   },
   {
     "name": "Beautiful.ai",

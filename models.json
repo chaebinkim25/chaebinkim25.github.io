@@ -1,14 +1,5 @@
 [
   {
-    "name": "Nano Banana",
-    "org": "Nano-Banana",
-    "date": "2025-10",
-    "category": ["이미지"],
-    "desc": "하나의 프롬프트로 이미지 제작, 상업적 사용 가능, 인물 일관성 유지, 구도 처리, 여러 이미지 합성, Google Gemini 2.5 Flash Image API로 구현됨",
-    "url": "https://www.nano-banana.ai/",
-    "price": { "free": false, "trial": true, "subscription": "$10 / 50개, $30 / 250개, $80 / 1600개"}
-  },
-  {
     "name": "Claude 3.7 Sonnet",
     "org": "Anthropic",
     "date": "2025-09",

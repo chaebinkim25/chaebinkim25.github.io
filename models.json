@@ -1,5 +1,23 @@
 [
   {
+    "name": "Gemini 2.5 Flash Image (Nano Banana)",
+    "org": "Google DeepMind",
+    "date": "2025-08",
+    "category": ["이미지", "멀티모달", "편집", "생성"],
+    "desc": "코드명 '나노바나나'로 알려진 이미지 생성 및 편집 특화 모델. 인물 일관성 유지와 자연스러운 합성 능력에서 강점.",
+    "url": "https://gemini.google/kr/overview/image-generation/",
+    "price": { "free": true, "trial": false, "notes": "Gemini 플랫폼을 통해 이용 가능" }
+  },
+  {
+    "name": "Gemini 2 Ultra",
+    "org": "Google DeepMind",
+    "date": "2025-09",
+    "category": ["텍스트", "코드", "멀티모달", "추론"],
+    "desc": "가장 복잡한 작업과 고도의 추론 능력을 요하는 분야에 최적화된 구글의 최상위 플래그십 모델.",
+    "url": "https://deepmind.google/technologies/gemini",
+    "price": { "free": false, "trial": false, "notes": "유료 플랜(Gemini Advanced)을 통해 이용" }
+  },
+  {
     "name": "Claude 3.7 Sonnet",
     "org": "Anthropic",
     "date": "2025-09",
@@ -49,7 +67,7 @@
     "org": "Google DeepMind",
     "date": "2025-06",
     "category": ["멀티모달"],
-    "desc": "실시간 상호작용과 빠른 응답에 최적화된 경량 모델.",
+    "desc": "실시간 상호작용과 빠른 응답에 최적화된 경량 모델. 광범위한 멀티모달 기능 지원.",
     "url": "https://deepmind.google/technologies/gemini",
     "price": { "free": true, "trial": false }
   },

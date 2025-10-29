@@ -165,7 +165,7 @@ function renderModels() {
     const div = document.createElement('div');
     div.className = 'cite';
     div.innerHTML = `
-      ${fam} ${catPills} <b>${m.name || '이름 없음'}</b>
+      ${catPills}${fam} <b>${m.name || '이름 없음'}</b>
       ${org || date ? ` <small>(${[org, date].filter(Boolean).join(', ')})</small>` : ''}<br>
       
       ${m.desc ? `<div style="margin-top:4px">${m.desc}</div>` : ''}

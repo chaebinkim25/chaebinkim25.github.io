@@ -5,7 +5,7 @@
     "org": "Google DeepMind",
     "date": "2025-08",
     "category": ["이미지"],
-    "desc": "Gemini의 이미지 생성 및 편집 모델. 나노 바나나(nano-banana)로 알려져있다. 이전 버전 2.0 Flash에서 이미지 생성은 초기 단계의 기능이었다. 업데이트를 통해 캐릭터 일관성, 지시 문장으로 이미지 편집, 이미지 합성, 지시 문장 및 스케치에 대한 이해력이 향상되었다.",
+    "desc": "Gemini의 이미지 생성 및 편집 모델. 나노 바나나(nano-banana)로 알려져있다. 이전 버전 2.0 Flash에서 이미지 생성은 초기 단계의 기능이었다. 업데이트를 통해 캐릭터 일관성, 지시 문장으로 이미지 편집, 이미지 합성, 지시 문장 및 스케치에 대한 이해가 향상되었다.",
     "url": "https://developers.googleblog.com/ko/introducing-gemini-2-5-flash-image/"
   }
 ]

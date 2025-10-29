@@ -1,38 +1,26 @@
 <!doctype html>
-
 <html lang="ko">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>🧠 최신 AI 모델</title>
+  <title>AI 버전 업데이트</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
 <div class="app">
   <header>
-    <h1>🧠 최신 AI 모델</h1>
+    <h1>AI 버전 업데이트</h1>
   </header>
 
   <main class="col wide">
     <div class="panel">
-      <div class="flex" style="margin:6px 0 10px 0">
-        <select id="aiCatFilter" class="input" style="max-width:180px">
-          <option value="">전체 카테고리</option>
-          <option>오픈소스</option>
-          <option>텍스트</option>
-          <option>코드</option>
-          <option>이미지/영상</option>
-          <option>오디오/음성</option>
-          <option>멀티모달</option>
-        </select>
-        <label class="tag"><input id="aiFreeOnly" type="checkbox">무료/프리티어만</label>
-      </div>
+      <select id="aiCatFilter"></select>
       <div id="aiList"></div>
     </div>
   </main>
 
   <footer>
-    © 2025 AI Portal • 최신 AI 모델 정보 (수동 업데이트형)
+    © 2025 AI Portal • AI 버전 업데이트 (수동 업데이트형)
   </footer>
 </div>
 <script src="app.js"></script>

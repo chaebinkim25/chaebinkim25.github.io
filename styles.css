@@ -1,15 +1,15 @@
 /* ===============================
-   최신 AI 모델 보기 좋은 카드형 스타일
+   최신 AI 모델 보기 좋은 카드형 스타일 (화이트 테마)
    =============================== */
 :root {
-  --bg: #0b0f14;
-  --panel: #121821;
-  --muted: #cbd5e1;
-  --text: #f8fafc;
-  --accent: #60a5fa;
-  --card: #1e293b;
-  --border: #334155;
-  --highlight: #2563eb;
+  --bg: #ffffff;
+  --panel: #f8fafc;
+  --muted: #64748b;
+  --text: #0f172a;
+  --accent: #2563eb;
+  --card: #f1f5f9;
+  --border: #cbd5e1;
+  --highlight: #1d4ed8;
 }
 
 * { box-sizing: border-box; }
@@ -46,6 +46,11 @@ main {
   padding: 40px 5%;
 }
 
+/* 카테고리 선택 드롭다운 아래 여백 */
+#aiCatFilter {
+  margin-bottom: 12px; /* 필요 시 16~20px로 조절 */
+}
+
 .flex {
   display: flex;
   gap: 12px;
@@ -56,7 +61,7 @@ main {
 }
 
 .input, select {
-  background: #0f172a;
+  background: #f8fafc;
   color: var(--text);
   border: 1px solid var(--border);
   border-radius: 10px;
@@ -72,7 +77,7 @@ main {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  background: #1e293b;
+  background: #e2e8f0;
   border: 1px solid var(--border);
   color: var(--muted);
   padding: 8px 12px;
@@ -94,12 +99,12 @@ main {
   border-radius: 16px;
   padding: 20px;
   transition: all 0.25s ease;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.25);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
 }
 .cite:hover {
   border-color: var(--highlight);
   transform: translateY(-3px);
-  box-shadow: 0 4px 16px rgba(37,99,235,0.3);
+  box-shadow: 0 4px 14px rgba(37,99,235,0.15);
 }
 .cite b {
   font-size: 1.25rem;
@@ -112,8 +117,8 @@ main {
 .cite .pill {
   display: inline-block;
   margin-top: 8px;
-  background: #0f172a;
-  color: #e0e7ff;
+  background: #e0e7ff;
+  color: #1e3a8a;
   border-radius: 8px;
   padding: 4px 10px;
   font-size: 0.9rem;
@@ -136,6 +141,7 @@ footer {
   font-size: 0.9rem;
   padding: 20px;
   border-top: 1px solid var(--border);
+  background: var(--panel);
 }
 
 @media (max-width: 768px) {

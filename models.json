@@ -7,5 +7,14 @@
     "category": ["이미지"],
     "desc": "Gemini의 이미지 생성 및 편집 모델. 나노 바나나(nano-banana)로 알려져있다. 이전 버전 2.0 Flash에서 이미지 생성은 초기 단계의 기능이었다. 업데이트를 통해 캐릭터 일관성, 지시 문장으로 이미지 편집, 이미지 합성, 지시 문장 및 스케치에 대한 이해가 향상되었다.",
     "url": "https://developers.googleblog.com/ko/introducing-gemini-2-5-flash-image/"
+  },
+  {
+    "name": "2.5 Pro (I/O Edition)",
+    "model_family": "Gemini",
+    "org": "Google DeepMind",
+    "date": "2025-05",
+    "category": ["코딩"],
+    "desc": "2025년 5월 Google I/O를 앞두고 공개된 Gemini 2.5 Pro의 미리보기 버전. 특히 코딩 성능이 비약적으로 향상되었으며, '딥 씽크(Deep Think)'라는 고급 추론 모드가 도입되었다. WebDev Arena 등 주요 코딩 벤치마크에서 1위를 차지하며 전문 개발 역량을 입증했다.",
+    "url": "https://developers.googleblog.com/ko/gemini-2-5-pro-io-improved-coding-performance/"
   }
 ]

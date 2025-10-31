@@ -160,7 +160,7 @@ function renderModels() {
     }
 
     const url = m.url ? String(m.url) : '';
-    const urlAnchor = url ? `<a href="${url}" target="_blank" style="margin-left:8px">🔗 ${url}</a>` : '';
+    const urlAnchor = url ? `<a href="${url}" target="_blank" style="margin-left:8px; word-break: break-all;">🔗 ${url}</a>` : '';
 
     const div = document.createElement('div');
     div.className = 'cite';
@@ -185,7 +185,7 @@ async function loadModels() {
     const items = await res.json();
     ALL_MODELS = Array.isArray(items) ? items : [];
 
-    // ✅ 카테고리 선택 옵션을 데이터로부터 채움
+    // 카테고리 선택 옵션을 데이터로부터 채움
     populateCategoryFilter(ALL_MODELS);
 
     renderModels();

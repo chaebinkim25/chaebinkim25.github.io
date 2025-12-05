@@ -1,4 +1,13 @@
 [
+{
+    "name": "3.0 Pro",
+    "model_family": "Gemini",
+    "org": "Google DeepMind",
+    "date": "2025-11",
+    "category": ["멀티모달", "에이전트", "코딩"],
+    "desc": "2025년 11월 18일 공식 출시된 Google의 최상위 모델. LMArena 1501 Elo를 기록하며 1위를 탈환했다. 'Vibe Coding'이라 불리는 직관적 코딩 지원과 자율 에이전트(Agentic) 능력이 핵심이다. 단순한 지시 이행을 넘어, 'Google Antigravity' 플랫폼을 통해 스스로 계획(Plan)하고 터미널과 브라우저를 제어하며 복잡한 소프트웨어 개발 작업을 수행한다.",
+    "url": "https://blog.google/products/gemini/gemini-3/"
+  },
   {
     "name": "2.5 Flash Image",
     "model_family": "Gemini",
